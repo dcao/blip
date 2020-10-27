@@ -1,6 +1,6 @@
 # blip
 
-blip it's for journaling.
+it's for journaling.
 
 ## Getting Started
 
