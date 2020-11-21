@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "401813348561",
+    "firebase_url": "https://blogs-c4641.firebaseio.com",
+    "project_id": "blogs-c4641",
+    "storage_bucket": "blogs-c4641.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401813348561:android:8b176f4973fb40191625f0",
+        "android_client_info": {
+          "package_name": "sh.cao.blip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401813348561-39oa07u44s9hqc31a0a5hs9rgihnpp0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxCJikbo4snuxmvlL-TmU7c75BhftrrpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401813348561-39oa07u44s9hqc31a0a5hs9rgihnpp0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
