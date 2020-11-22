@@ -52,17 +52,32 @@ class _MyCanvasState extends State<MyCanvas> {
             _offsets.add(null);
           });
         },
-        child: Center(
-          child: CustomPaint(
-            painter: FlipBookPainter(_offsets),
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+        child: Stack(
+          children: <Widget> [
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/test_ocean.jpg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
+            CustomPaint(
+              painter: FlipBookPainter(_offsets),
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+              ),
+            ),
+          ]
         ),
-        // This trailing comma makes auto-formatting nicer for build methods.
       ),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.send),
+          onPressed: () {
+            Navigator.pushNamed(context, '/draw');
+          },
+        ),
     );
   }
 }
