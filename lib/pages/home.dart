@@ -9,26 +9,28 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
+        body: SafeArea(
+            child: Column(
           children: [
             FlatButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/write');
-              }, 
-              icon: Icon(Icons.comment_outlined), 
-              label: Text("Write New Journal Entry")
-            ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/write');
+                },
+                icon: Icon(Icons.comment_outlined),
+                label: Text("Write New Journal Entry")),
             FlatButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/view');
-              }, 
-              icon: Icon(Icons.comment_outlined), 
-              label: Text("View Entries")
-            ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/view');
+                },
+                icon: Icon(Icons.comment_outlined),
+                label: Text("View Entries")),
           ],
-        )
-      )
-    );
+        )),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.camera),
+          onPressed: () {
+            Navigator.pushNamed(context, '/draw');
+          },
+        ),);
   }
 }

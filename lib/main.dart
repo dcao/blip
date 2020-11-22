@@ -1,3 +1,4 @@
+import 'package:blip/pages/canvas.dart';
 import 'package:flutter/material.dart';
 import 'package:blip/pages/home.dart';
 import 'package:blip/pages/write.dart';
@@ -12,7 +13,8 @@ void main() async {
     routes: {
       '/home': (context) => Home(),
       '/write': (context) => AddBlog(),
-      '/view': (context) => View()
+      '/view': (context) => View(),
+      '/draw': (context) => MyCanvas(),
     }
   ));
 }
