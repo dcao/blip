@@ -7,18 +7,21 @@ class AddBlog extends StatefulWidget {
 }
 
 class _AddBlogState extends State<AddBlog> {
-  TextEditingController _controller;
+  TextEditingController titleController;
+  TextEditingController textController;
   String text = "";
   final _formKey = GlobalKey<FormState>();
 
 
   void initState(){
     super.initState();
-    _controller = TextEditingController();
+    titleController = TextEditingController();
+    textController = TextEditingController();
   }
 
   void dispose(){
-    _controller.dispose();
+    titleController.dispose();
+    textController.dispose();
     super.dispose();
   }
 
@@ -35,6 +38,7 @@ class _AddBlogState extends State<AddBlog> {
         child: Column(
           children: [
             TextFormField(
+              controller: titleController,
               decoration: const InputDecoration(
                 icon: Icon(Icons.title),
                 hintText: 'What do you want this to be called',
@@ -49,6 +53,7 @@ class _AddBlogState extends State<AddBlog> {
               }
             ),
             TextFormField(
+              controller: textController,
               decoration: const InputDecoration(
                 icon: Icon(Icons.text_snippet),
                 hintText: 'Your content',
@@ -65,8 +70,8 @@ class _AddBlogState extends State<AddBlog> {
               onPressed: () {
                 if(_formKey.currentState.validate()) {
                   FirebaseFirestore.instance.collection('blogs').add({
-                    'text': "lots of text",
-                    'title' : "sampleTest"
+                    'title' : titleController.text,
+                    'text': textController.text,
                   }).then((value){
                     print(value);
                   });

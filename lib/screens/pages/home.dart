@@ -1,4 +1,8 @@
+import 'package:blip/screens/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+FirebaseAuth auth = FirebaseAuth.instance;
 
 class Home extends StatefulWidget {
   @override
@@ -6,9 +10,24 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Blip"),
+        actions: [
+          FlatButton.icon(
+            icon: Icon(Icons.person),
+            label: Text("Logout"),
+            onPressed: () async {
+              await _auth.signOut();
+            },
+          )
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
