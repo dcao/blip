@@ -1,4 +1,5 @@
 import 'package:blip/models/curr_user.dart';
+import 'package:blip/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 
@@ -31,6 +32,34 @@ class AuthService {
   }
 
   //sign in with email pass
+ Future signInWithEmailAndPassword(String email, String password) async {
+    
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password
+      );
+
+      User user = userCredential.user;
+      return _userFromFirebaseUser(user);
+
+    } on PlatformException catch (e){
+      print(e.toString());
+      return null;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      } else {
+        print(e.toString());
+      }
+      return null;
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  } 
 
   //register with email pass
   Future registerWithEmailAndPassword(String email, String password) async {
@@ -43,11 +72,15 @@ class AuthService {
       );
 
       User user = userCredential.user;
-      // return _userFromFirebaseUser(user);
+
+      //create a new doc for user
+      await DatabaseService(uid: user.uid).updateUserData("Defualt Title", "Default Text");
+      return _userFromFirebaseUser(user);
 
     } on PlatformException catch (e){
       print(e.toString());
-    }on FirebaseAuthException catch (e) {
+      return null;
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
@@ -55,10 +88,10 @@ class AuthService {
       } else {
         print(e.toString());
       }
-      // return null;
+      return null;
     } catch (e) {
       print(e);
-      // return null;
+      return null;
     }
   }
 

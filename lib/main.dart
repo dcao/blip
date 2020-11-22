@@ -1,4 +1,4 @@
-import 'package:blip/screens/services/auth.dart';
+import 'package:blip/services/auth.dart';
 import 'package:blip/models/curr_user.dart';
 import 'package:blip/screens/wrapper.dart';
 import 'package:flutter/material.dart';
